@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width" />
+<title>Lista de Convidados</title>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+
+</head>
+<body>
+<body>
+	<div class="panel panel-default" style="margin: 10px">
+		<div class="panel-heading">
+			<h1 class="panel-title">Lista de convidados</h1>
+		</div>
+
+		<form class="form-inline" method="POST" style="margin: 20px 0"
+			th:object="${convidado}" th:action="@{/convidados}">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Nome" th:field="*{nome}" /> 
+				<input type="text" class="form-control" placeholder="Acompanhantes" th:field="*{qtdAcompanhantes}" />
+				<button type="submit" class="btn btn-primary">Adicionar</button>
+			</div>
+		</form>
+
+
+		<div class="panel-body">
+			<table class="table table-striped class table-hover">
+				<thead class="thead-dark">
+					<tr>
+						<th>Nome</th>
+						<th>Acompanhantes</th>
+					</tr>
+
+				</thead>
+				<tbody>
+					<tr th:each="convidado : ${convidados}">
+						<td th:text="${convidado.nome}"></td>
+						<td th:text="${convidado.qtdAcompanhantes}"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+
+
+</body>
+
+
+
+
+
+</html>
